@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
+import 'package:test_2s_app/features/home/presentation/screen.dart';
 import 'package:test_2s_app/features/welcome/presentation/screen.dart';
 
 void main() {
@@ -22,6 +23,9 @@ class MainApp extends StatelessWidget {
         return switch (settings.name) {
           '/' => CupertinoPageRoute(
               builder: (_) => const WelcomeScreen(),
+            ),
+          'home' => CupertinoPageRoute(
+              builder: (_) => const HomeScreen(),
             ),
           _ => CupertinoPageRoute(
               builder: (_) => const WelcomeScreen(),

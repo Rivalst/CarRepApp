@@ -72,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
                 width: 454,
                 height: 47,
                 child: CupertinoButton(
-                  onPressed: () => null,
+                  onPressed: () => Navigator.pushNamed(context, 'home'),
                   color: kGreenMainColor,
                   borderRadius: BorderRadius.circular(kBorderRadius),
                   child: const Text(
