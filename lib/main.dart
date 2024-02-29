@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:test_2s_app/core/constants/constants.dart';
+import 'package:test_2s_app/features/welcome/presentation/screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +11,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return CupertinoApp(
+      debugShowCheckedModeBanner: false,
+      theme: const CupertinoThemeData(
+        scaffoldBackgroundColor: kBackgroundColor,
+        barBackgroundColor: kBackgroundColor
       ),
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        return switch (settings.name) {
+          '/' => CupertinoPageRoute(
+              builder: (_) => const WelcomeScreen(),
+            ),
+          _ => CupertinoPageRoute(
+              builder: (_) => const WelcomeScreen(),
+            ),
+        };
+      },
     );
   }
 }
