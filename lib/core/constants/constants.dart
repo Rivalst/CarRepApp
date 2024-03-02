@@ -17,3 +17,22 @@ const kGapSize = 20.0;
 // another
 
 late SharedPreferences sharedPreferences;
+
+// enum
+enum AppLoad {
+  loading,
+  loaded,
+  error,
+}
+
+enum AppGeoConnection {
+  successful,
+  connection,
+  error,
+}
+
+enum AppView {
+  welcome,
+  home,
+  loading,
+}

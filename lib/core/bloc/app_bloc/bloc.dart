@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:test_2s_app/core/constants/constants.dart';
 import 'package:test_2s_app/core/domain/usecase/get_username.dart';
 import 'package:test_2s_app/core/domain/usecase/set_username.dart';
 

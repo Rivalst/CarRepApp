@@ -1,23 +1,5 @@
 part of 'bloc.dart';
 
-enum AppLoad {
-  loading,
-  loaded,
-  error,
-}
-
-enum AppGeoConnection {
-  successful,
-  connection,
-  error,
-}
-
-enum AppView {
-  welcome,
-  home,
-  loading,
-}
-
 final class AppState extends Equatable {
   final String username;
   final AppLoad appLoad;
