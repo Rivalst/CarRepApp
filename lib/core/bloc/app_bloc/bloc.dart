@@ -19,7 +19,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           username: '',
           appLoad: AppLoad.loading,
           appView: AppView.loading,
-          appGeoConnection: AppGeoConnection.connection,
         )) {
     on<AppLoaded>(_usernameGetter);
     on<ButtonPressed>(_usernameSetter);

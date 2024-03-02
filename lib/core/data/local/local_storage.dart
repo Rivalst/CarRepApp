@@ -15,7 +15,7 @@ class LocalUserStorageImpl implements LocalUserStorage {
   @override
   Future<String> getUserName() async {
     final username = _sharedPreferences.getString('username');
-    return username ?? 'Test';
+    return username ?? '';
   }
 
   @override
