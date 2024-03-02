@@ -37,11 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
           activeColor: CupertinoColors.white,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
+              icon: Icon(CupertinoIcons.square_list_fill),
               label: 'Заявки',
             ),
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.search),
+              icon: Icon(CupertinoIcons.home),
               label: 'Головна',
             ),
             BottomNavigationBarItem(
