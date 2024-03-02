@@ -1,10 +1,26 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 import 'package:test_2s_app/core/widgets/button.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  late TextEditingController _controller;
+  late AppBloc _appBloc;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+    _appBloc = context.read<AppBloc>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +89,7 @@ class WelcomeScreen extends StatelessWidget {
       child: CupertinoTextField(
         style: const TextStyle(color: CupertinoColors.white),
         padding: const EdgeInsets.only(left: 16.0),
+        controller: _controller,
         placeholder: 'Ваше імʼя',
         placeholderStyle: const TextStyle(
           color: CupertinoColors.systemGrey,
@@ -88,7 +105,11 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 
-  void _buttonPress(BuildContext context) {
-    Navigator.pushReplacementNamed(context, 'home');
+  Future<void> _buttonPress(BuildContext context) async {
+    if (_controller.text.isNotEmpty) {
+      _appBloc.add(
+        ButtonPressed(username: _controller.text),
+      );
+    }
   }
 }

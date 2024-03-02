@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 import 'package:test_2s_app/core/widgets/button.dart';
 import 'package:test_2s_app/features/home/presentation/widgets/card_widgets.dart';
@@ -9,6 +11,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appBlocState = context.read<AppBloc>().state;
     return CupertinoTabView(
       builder: (context) {
         return CupertinoPageScaffold(
@@ -33,7 +36,9 @@ class MainPage extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                const WelcomeCardCart(),
+                WelcomeCardCart(
+                  userName: appBlocState.username,
+                ),
                 const MapWidget(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -78,14 +83,39 @@ class PersonalDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appBloc = context.read<AppBloc>();
     return CupertinoTabView(
       builder: (context) {
-        return const CupertinoPageScaffold(
+        return CupertinoPageScaffold(
           child: Center(
-            child: Text('Особисті Данні'),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Особисті Данні',
+                  style: TextStyle(
+                    color: CupertinoColors.white,
+                  ),
+                ),
+                CupertinoButton(
+                  onPressed: () => _buttonPress(appBloc, context),
+                  child: const Text(
+                    'logout',
+                    style: TextStyle(
+                      color: kGreenMainColor,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         );
       },
     );
+  }
+
+  void _buttonPress(AppBloc appBloc, BuildContext context) {
+    appBloc.add(ButtonPressed(username: ''));
   }
 }

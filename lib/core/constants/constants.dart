@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // colors
 const kBackgroundColor = Color(0xFF1E1E1E);
@@ -14,3 +15,24 @@ const kBorderRadius = 16.0;
 const kGapSize = 20.0;
 
 // another
+
+late SharedPreferences sharedPreferences;
+
+// enum
+enum AppLoad {
+  loading,
+  loaded,
+  error,
+}
+
+enum AppGeoConnection {
+  successful,
+  connection,
+  error,
+}
+
+enum AppView {
+  welcome,
+  home,
+  loading,
+}
