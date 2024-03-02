@@ -1,37 +1,64 @@
 import 'package:flutter/cupertino.dart';
-import 'package:test_2s_app/core/constants/constants.dart';
-import 'package:test_2s_app/features/home/presentation/screen.dart';
-import 'package:test_2s_app/features/welcome/presentation/screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MainApp());
+import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
+import 'package:test_2s_app/core/constants/constants.dart';
+import 'package:test_2s_app/core/data/local/local_storage.dart';
+import 'package:test_2s_app/core/data/user_repository_impl.dart';
+import 'package:test_2s_app/core/domain/usecase/get_username.dart';
+import 'package:test_2s_app/core/domain/usecase/set_username.dart';
+import 'package:test_2s_app/core/widgets/app.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sharedPreferences = await SharedPreferences.getInstance();
+  runApp(AppRoot(
+    sharedPreferences: sharedPreferences,
+  ));
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class AppRoot extends StatefulWidget {
+  const AppRoot({
+    required this.sharedPreferences,
+    super.key,
+  });
+  final SharedPreferences sharedPreferences;
+
+  @override
+  State<AppRoot> createState() => _AppRootState();
+}
+
+class _AppRootState extends State<AppRoot> {
+  late AppBloc appBloc;
+
+  @override
+  void initState() {
+    final localStorage =
+        LocalUserStorageImpl(sharedPreferences: sharedPreferences);
+    final repo = UserRepositoryImpl(localUserStorage: localStorage);
+    final getUserName = GetUserName(repository: repo);
+    final setUserName = SetUserName(localUserStorage: localStorage);
+    appBloc = AppBloc(
+      getUserName: getUserName,
+      setUserName: setUserName,
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      debugShowCheckedModeBanner: false,
-      theme: const CupertinoThemeData(
-        scaffoldBackgroundColor: kBackgroundColor,
-        barBackgroundColor: kBackgroundColor
+    return BlocProvider(
+      create: (_) => appBloc,
+      child: const CupertinoApp(
+        debugShowCheckedModeBanner: false,
+        theme: CupertinoThemeData(
+          scaffoldBackgroundColor: kBackgroundColor,
+          barBackgroundColor: kBackgroundColor,
+        ),
+        home: AppRouteConfig(),
       ),
-      initialRoute: '/',
-      onGenerateRoute: (RouteSettings settings) {
-        return switch (settings.name) {
-          '/' => CupertinoPageRoute(
-              builder: (_) => const WelcomeScreen(),
-            ),
-          'home' => CupertinoPageRoute(
-              builder: (_) => const HomeScreen(),
-            ),
-          _ => CupertinoPageRoute(
-              builder: (_) => const WelcomeScreen(),
-            ),
-        };
-      },
+
     );
   }
 }

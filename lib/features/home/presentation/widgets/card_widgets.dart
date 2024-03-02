@@ -3,7 +3,11 @@ import 'package:gap/gap.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 
 class WelcomeCardCart extends StatelessWidget {
-  const WelcomeCardCart({super.key});
+  final String userName;
+  const WelcomeCardCart({
+    required this.userName,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +54,16 @@ class WelcomeCardCart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Привіт, ',
                 style: TextStyle(fontSize: 16.0, color: CupertinoColors.white),
               ),
               Text(
-                'Олександр',
-                style: TextStyle(
+                userName,
+                style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                   color: CupertinoColors.white,
