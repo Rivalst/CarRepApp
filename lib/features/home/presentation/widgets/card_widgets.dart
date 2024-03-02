@@ -128,8 +128,12 @@ class WelcomeCardCart extends StatelessWidget {
                   width: 35,
                   height: 35,
                   decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(13)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: kSmallCardColor,
+                  ),
+                  child: const Icon(
+                    CupertinoIcons.car_detailed,
+                    color: kGreenMainColor,
                   ),
                 ),
               ),
@@ -142,8 +146,12 @@ class WelcomeCardCart extends StatelessWidget {
               width: 32,
               height: 32,
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(13)),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: kSmallCardColor,
+              ),
+              child: const Icon(
+                CupertinoIcons.question_square_fill,
+                color: kGreenMainColor,
               ),
             ),
           ),

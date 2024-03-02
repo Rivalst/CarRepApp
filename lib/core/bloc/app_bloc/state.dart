@@ -3,13 +3,11 @@ part of 'bloc.dart';
 final class AppState extends Equatable {
   final String username;
   final AppLoad appLoad;
-  final AppGeoConnection appGeoConnection;
   final AppView appView;
 
   const AppState({
     required this.username,
     required this.appLoad,
-    required this.appGeoConnection,
     required this.appView,
   });
 
@@ -22,7 +20,6 @@ final class AppState extends Equatable {
     return AppState(
       username: username ?? this.username,
       appLoad: appLoad ?? this.appLoad,
-      appGeoConnection: appGeoConnection ?? this.appGeoConnection,
       appView: appView ?? this.appView,
     );
   }
@@ -31,7 +28,6 @@ final class AppState extends Equatable {
   List<Object?> get props => [
         username,
         appLoad,
-        appGeoConnection,
         appView,
       ];
 }
