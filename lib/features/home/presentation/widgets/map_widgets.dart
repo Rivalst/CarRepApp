@@ -48,7 +48,7 @@ class _MapWidgetState extends State<MapWidget> with WidgetsBindingObserver {
         context.read<MapBloc>().add(MapLoaded());
         return Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(kMainPadding),
             child: ClipRRect(
               borderRadius: const BorderRadius.all(
                 Radius.circular(40),

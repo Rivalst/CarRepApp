@@ -45,7 +45,7 @@ class MainPage extends StatelessWidget {
                 const MapWidget(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0,
+                    horizontal: kMainPadding,
                   ),
                   child: MainGreenButton(
                     context: context,

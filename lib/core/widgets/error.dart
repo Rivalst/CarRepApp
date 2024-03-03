@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+import 'package:test_2s_app/core/constants/constants.dart';
+
 /// Widget error page to display when an error occurs in the application.
 class ErrorPage extends StatelessWidget {
   const ErrorPage({super.key});
@@ -8,7 +10,7 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CupertinoPageScaffold(
       child: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(kMainPadding),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
