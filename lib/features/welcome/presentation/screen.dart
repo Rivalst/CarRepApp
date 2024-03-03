@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:gap/gap.dart';
+
 import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 import 'package:test_2s_app/core/widgets/button.dart';
 
+/// Welcome screen where user can type his name
+///
+/// Also we have some text and button for step to the next page.
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 

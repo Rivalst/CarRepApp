@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+/// Widget error page to display when an error occurs in the application.
 class ErrorPage extends StatelessWidget {
   const ErrorPage({super.key});
 

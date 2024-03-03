@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 
+/// Simple main green button in the app
 class MainGreenButton extends StatelessWidget {
   const MainGreenButton({
     required this.context,

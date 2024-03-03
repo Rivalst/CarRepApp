@@ -1,5 +1,10 @@
 part of 'bloc.dart';
 
+/// Represents the current state of the map, including the application's geo-connection status 
+/// [AppGeoConnection], latitude, and longitude. 
+/// The MapState class is immutable and can be copied with updated values using the 
+/// copyWith method. The props list includes appGeoConnection, latitude, and longitude
+/// for equality comparison.
 final class MapState extends Equatable {
   final AppGeoConnection appGeoConnection;
   final double latitude;

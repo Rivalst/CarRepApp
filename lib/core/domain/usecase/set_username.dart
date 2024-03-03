@@ -1,5 +1,7 @@
 import 'package:test_2s_app/core/data/local/local_storage.dart';
 
+/// Usecase responsible for setting the username in the local user storage.
+/// It utilizes the [LocalUserStorage] service to save the username asynchronously.
 class SetUserName {
   final LocalUserStorage _localUserStorage;
 

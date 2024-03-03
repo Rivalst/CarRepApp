@@ -6,6 +6,10 @@ import 'package:test_2s_app/features/home/domain/usecase/get_current_location.da
 part 'event.dart';
 part 'state.dart';
 
+/// Bloc for handling map-related functionality, including fetching the current location 
+/// using the GetCurrentLocation service. 
+/// The MapBloc emits MapState representing the application's geo-connection status, 
+/// latitude, and longitude.
 class MapBloc extends Bloc<MapEvent, MapState> {
   final GetCurrentLocation _getCurrentLocation;
 

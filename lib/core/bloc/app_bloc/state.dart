@@ -1,5 +1,10 @@
 part of 'bloc.dart';
 
+/// The AppState class encapsulates the username,
+/// application load status [AppLoad], and current view [AppView].
+/// It is immutable and can be copied with updated values using the copyWith method.
+///
+/// The props list includes username, appLoad, and appView for equality comparison.
 final class AppState extends Equatable {
   final String username;
   final AppLoad appLoad;

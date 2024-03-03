@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 import 'package:test_2s_app/features/home/presentation/bloc/app_bloc/bloc.dart';
-import 'package:app_settings/app_settings.dart';
 
+/// Widget of Map.
+///
+/// Using GoogleMap for a view map, also there is current position.
 class MapWidget extends StatefulWidget {
   const MapWidget({super.key});
 
@@ -27,6 +30,9 @@ class _MapWidgetState extends State<MapWidget> with WidgetsBindingObserver {
     googleMapController = controller;
   }
 
+  // There we check is app go to the background and back
+  // Then if the state if lifecycle app was be changed
+  // We update map state
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
@@ -63,6 +69,7 @@ class _MapWidgetState extends State<MapWidget> with WidgetsBindingObserver {
     };
   }
 
+  // builded map widget when state of load map is loading(connection to geo...)
   Widget _buildMapLoading() {
     return Stack(
       children: [
@@ -86,6 +93,8 @@ class _MapWidgetState extends State<MapWidget> with WidgetsBindingObserver {
     );
   }
 
+  // builded map widget when state of load map is successful
+
   Widget _buildMapSuccessful(
     MapState state,
   ) {
@@ -100,6 +109,7 @@ class _MapWidgetState extends State<MapWidget> with WidgetsBindingObserver {
     );
   }
 
+  // builded map widget when state of load map is unsuccessful(error)
   Widget _buildMapError(BuildContext context) {
     return Stack(
       children: [
@@ -162,10 +172,9 @@ class _MapWidgetState extends State<MapWidget> with WidgetsBindingObserver {
                       fontSize: 13.0,
                     ),
                   ),
-                  onPressed: () {
-                    AppSettings.openAppSettings(
-                      type: AppSettingsType.location,
-                    );
+                  // opened add settings
+                  onPressed: () async {
+                    await Geolocator.openAppSettings();
                   },
                 )
               ],

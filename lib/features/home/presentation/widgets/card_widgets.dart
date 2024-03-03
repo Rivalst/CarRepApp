@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 
-class WelcomeCardCart extends StatelessWidget {
+/// Card which welcomes the user and offers to add his car
+class WelcomeCardCar extends StatelessWidget {
   final String userName;
-  const WelcomeCardCart({
+  const WelcomeCardCar({
     required this.userName,
     super.key,
   });

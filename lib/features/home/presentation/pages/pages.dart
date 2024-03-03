@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
 import 'package:test_2s_app/core/widgets/button.dart';
 import 'package:test_2s_app/features/home/presentation/widgets/card_widgets.dart';
 import 'package:test_2s_app/features/home/presentation/widgets/map_widgets.dart';
 
+/// The page that displays the [WelcomeCardCar], [MapWidget] and display
+/// buttons to call the "wizard of cars ;)"
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
@@ -36,7 +39,7 @@ class MainPage extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                WelcomeCardCart(
+                WelcomeCardCar(
                   userName: appBlocState.username,
                 ),
                 const MapWidget(),
@@ -61,6 +64,7 @@ class MainPage extends StatelessWidget {
   void _buttonPress(BuildContext context) {}
 }
 
+/// Page with requests user
 class RequestsPage extends StatelessWidget {
   const RequestsPage({super.key});
 
@@ -78,6 +82,7 @@ class RequestsPage extends StatelessWidget {
   }
 }
 
+/// Page with personal data about user
 class PersonalDataPage extends StatelessWidget {
   const PersonalDataPage({super.key});
 
