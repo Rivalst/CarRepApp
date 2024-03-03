@@ -1,3 +1,9 @@
 # test_2s_app
 
-A new Flutter project.
+packedges used:
+- BLoC
+- Google Map
+- Geolocator
+- GAP
+- shared_preferences
+- equatable
