@@ -85,11 +85,16 @@ class WelcomeCardCar extends StatelessWidget {
                   ),
                 ),
                 Gap(5.0),
-                Text(
-                  'Завантажте дані про ваше авто для кращого використання сервісу.',
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    color: CupertinoColors.white,
+                FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(
+                    'Завантажте дані про ваше авто для\nкращого використання сервісу.',
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: CupertinoColors.white,
+                    ),
+                    softWrap: true,
+                    maxLines: 2,
                   ),
                 ),
               ],
