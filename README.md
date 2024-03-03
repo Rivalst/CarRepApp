@@ -8,4 +8,6 @@ packedges used:
 - shared_preferences
 - equatable
 
+App architecture based on BLoC with Clean Architecture
+
 PROJECT BUILDED ONLY FOR iOS !
