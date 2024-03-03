@@ -7,3 +7,5 @@ packedges used:
 - GAP
 - shared_preferences
 - equatable
+
+PROJECT BUILDED ONLY FOR iOS !
