@@ -11,3 +11,6 @@ packedges used:
 App architecture based on BLoC with Clean Architecture
 
 PROJECT BUILDED ONLY FOR iOS !
+
+
+git checkout navigation_gorouter - To switch from the main branch to a branch that uses the GoRouter navigation library
