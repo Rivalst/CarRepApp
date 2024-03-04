@@ -51,15 +51,19 @@ class _AppRootState extends State<AppRoot> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => appBloc,
-      child: const CupertinoApp(
-        debugShowCheckedModeBanner: false,
-        theme: CupertinoThemeData(
-          scaffoldBackgroundColor: kBackgroundColor,
-          barBackgroundColor: kBackgroundColor,
-        ),
-        home: AppRouteConfig(),
+      child: BlocBuilder<AppBloc, AppState>(
+        builder: (context, state) {
+          context.read<AppBloc>().add(AppLoaded());
+          return CupertinoApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: const CupertinoThemeData(
+              scaffoldBackgroundColor: kBackgroundColor,
+              barBackgroundColor: kBackgroundColor,
+            ),
+            routerConfig: router(state),
+          );
+        },
       ),
-
     );
   }
 }

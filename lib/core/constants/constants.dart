@@ -1,6 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
+import 'package:test_2s_app/features/home/presentation/screen.dart';
+import 'package:test_2s_app/features/welcome/presentation/screen.dart';
 
 // colors
 const kBackgroundColor = Color(0xFF1E1E1E);
@@ -19,6 +23,32 @@ const kGapSize = 20.0;
 // another
 
 late SharedPreferences sharedPreferences;
+/// Main route config for the app
+GoRouter router(AppState appState) {
+  return GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        pageBuilder: (context, state) => const CupertinoPage(
+          child: WelcomeScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/home',
+        pageBuilder: (context, state) => const CupertinoPage(
+          child: HomeScreen(),
+        ),
+      ),
+    ],
+    redirect: (context, state) {
+      return switch (appState.appView) {
+        AppView.welcome => '/',
+        AppView.home => '/home',
+        AppView.loading => '/',
+      };
+    },
+  );
+}
 
 // enum
 enum AppLoad {
