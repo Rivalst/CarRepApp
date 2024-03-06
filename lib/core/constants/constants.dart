@@ -53,7 +53,7 @@ GoRouter router(AppState appState) {
       return switch (appState.appView) {
         AppView.welcome => '/',
         AppView.home => '/home',
-        AppView.loading => '/login',
+        AppView.loading => '/loading',
       };
     },
   );
