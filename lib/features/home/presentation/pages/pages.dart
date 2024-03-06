@@ -120,7 +120,18 @@ class PersonalDataPage extends StatelessWidget {
     );
   }
 
-  void _buttonPress(AppBloc appBloc, BuildContext context) {
+  void _buttonPress(
+    AppBloc appBloc,
+    BuildContext context,
+  ) {
     appBloc.add(ButtonPressed(username: ''));
+
+    // context.octopus.setState(
+    //   (state) => state
+    //     ..putIfAbsent(
+    //       Routes.welcome.name,
+    //       Routes.welcome.node,
+    //     ),
+    // );
   }
 }

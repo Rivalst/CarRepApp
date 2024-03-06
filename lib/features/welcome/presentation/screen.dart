@@ -115,6 +115,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       _appBloc.add(
         ButtonPressed(username: _controller.text),
       );
+      
+      // context.octopus.setState(
+      //   (state) => state
+      //     ..putIfAbsent(
+      //       Routes.home.name,
+      //       Routes.home.node,
+      //     ),
+      // );
     }
   }
 }

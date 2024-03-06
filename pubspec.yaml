@@ -16,6 +16,7 @@ dependencies:
   gap: ^3.0.1
   geolocator: ^11.0.0
   google_maps_flutter: ^2.5.3
+  octopus: ^0.0.8
   shared_preferences: ^2.2.2
 
 dev_dependencies:

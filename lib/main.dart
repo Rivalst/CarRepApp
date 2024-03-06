@@ -9,7 +9,6 @@ import 'package:test_2s_app/core/data/local/local_storage.dart';
 import 'package:test_2s_app/core/data/user_repository_impl.dart';
 import 'package:test_2s_app/core/domain/usecase/get_username.dart';
 import 'package:test_2s_app/core/domain/usecase/set_username.dart';
-import 'package:test_2s_app/core/widgets/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,15 +50,19 @@ class _AppRootState extends State<AppRoot> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => appBloc,
-      child: const CupertinoApp(
-        debugShowCheckedModeBanner: false,
-        theme: CupertinoThemeData(
-          scaffoldBackgroundColor: kBackgroundColor,
-          barBackgroundColor: kBackgroundColor,
-        ),
-        home: AppRouteConfig(),
+      child: BlocBuilder<AppBloc, AppState>(
+        builder: (context, state) {
+          context.read<AppBloc>().add(AppLoaded());
+          return CupertinoApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: const CupertinoThemeData(
+              scaffoldBackgroundColor: kBackgroundColor,
+              barBackgroundColor: kBackgroundColor,
+            ),
+            routerConfig: router(state).config,
+          );
+        },
       ),
-
     );
   }
 }
