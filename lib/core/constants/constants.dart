@@ -23,6 +23,7 @@ const kGapSize = 20.0;
 // another
 
 late SharedPreferences sharedPreferences;
+
 /// Main route config for the app
 GoRouter router(AppState appState) {
   return GoRouter(
@@ -39,12 +40,20 @@ GoRouter router(AppState appState) {
           child: HomeScreen(),
         ),
       ),
+      GoRoute(
+        path: '/loading',
+        pageBuilder: (context, state) => const CupertinoPage(
+          child: Center(
+            child: CupertinoActivityIndicator(),
+          ),
+        ),
+      ),
     ],
     redirect: (context, state) {
       return switch (appState.appView) {
         AppView.welcome => '/',
         AppView.home => '/home',
-        AppView.loading => '/',
+        AppView.loading => '/login',
       };
     },
   );
