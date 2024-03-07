@@ -49,12 +49,10 @@ GoRouter router(AppState appState) {
         ),
       ),
     ],
-    redirect: (context, state) {
-      return switch (appState.appView) {
-        AppView.welcome => '/',
-        AppView.home => '/home',
-        AppView.loading => '/loading',
-      };
+    initialLocation: switch (appState.appView) {
+      AppView.welcome => '/',
+      AppView.home => '/home',
+      AppView.loading => '/loading',
     },
   );
 }

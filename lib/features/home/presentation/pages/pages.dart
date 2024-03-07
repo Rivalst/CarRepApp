@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
@@ -121,6 +122,9 @@ class PersonalDataPage extends StatelessWidget {
   }
 
   void _buttonPress(AppBloc appBloc, BuildContext context) {
-    appBloc.add(ButtonPressed(username: ''));
+    appBloc.add(
+      ButtonPressed(username: ''),
+    );
+    GoRouter.of(context).go('/');
   }
 }

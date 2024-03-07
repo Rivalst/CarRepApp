@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:test_2s_app/core/bloc/app_bloc/bloc.dart';
 import 'package:test_2s_app/core/constants/constants.dart';
@@ -115,6 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       _appBloc.add(
         ButtonPressed(username: _controller.text),
       );
+      GoRouter.of(context).push('/home');
     }
   }
 }
